@@ -85,53 +85,25 @@ class KeyPoller:
         return _input
 
 
+if __name__ == "__main__":
 
-with KeyPoller() as poller:
-    while True:
-        char = poller.poll()
-        match char:
-            case SnakeKeys.UP_ARROW.value | SnakeKeys.UP.value:
-                print("UP")
-            case SnakeKeys.DOWN_ARROW.value | SnakeKeys.DOWN.value:
-                print("DOWN")
-            case SnakeKeys.RIGHT_ARROW.value | SnakeKeys.RIGHT.value:
-                print("RIGHT")
-            case SnakeKeys.LEFT_ARROW.value | SnakeKeys.LEFT.value:
-                print("LEFT")
-            case "q":
-                break
-            case None:
-                pass
-            case _:
-                print(char)
+    with KeyPoller() as poller:
+        while True:
+            char = poller.poll()
+            match char:
+                case SnakeKeys.UP_ARROW.value | SnakeKeys.UP.value:
+                    print("UP")
+                case SnakeKeys.DOWN_ARROW.value | SnakeKeys.DOWN.value:
+                    print("DOWN")
+                case SnakeKeys.RIGHT_ARROW.value | SnakeKeys.RIGHT.value:
+                    print("RIGHT")
+                case SnakeKeys.LEFT_ARROW.value | SnakeKeys.LEFT.value:
+                    print("LEFT")
+                case "q":
+                    break
+                case None:
+                    pass
+                case _:
+                    print(char)
 
-        time.sleep(1/60)
-
-
-
-
-# while char != "c":
-#     # print(char)
-#     char = ""
-#     dr,dw,de = select.select([sys.stdin.fileno()],[],[],0)
-#     if dr != []:
-#         char = sys.stdin.read(1)
-#         if char == "\x1b":
-#             char += sys.stdin.read(2)
-#         # else:
-#         #     print(char)
-#         #     continue
-
-#         match char:
-#             case SnakeKeys.UP_ARROW.value | SnakeKeys.UP.value:
-#                 print("UP")
-#             case SnakeKeys.DOWN_ARROW.value | SnakeKeys.DOWN.value:
-#                 print("DOWN")
-#             case SnakeKeys.RIGHT_ARROW.value | SnakeKeys.RIGHT.value:
-#                 print("RIGHT")
-#             case SnakeKeys.LEFT_ARROW.value | SnakeKeys.LEFT.value:
-#                 print("LEFT")
-#             case _:
-#                 print(char)
-
-#     time.sleep(1/60)
+            time.sleep(1/60)
